@@ -27,19 +27,36 @@ if grep -Fxq "$gateway" /home/"$username"/.ssh/config ;
 		exit 1
 fi
 
-read -p "Reboot gateway "$gateway"? (y/n)" -n 1 -r
+read -r -p "Reboot gateway "$gateway"? (y/n)" input
 echo
-if [[ $REPLY=~ ^[Nn]$ ]]
-	then 
-	  	echo "No entered. Exiting."
-		exit 1
-fi
+case $input in
+    [yY][eE][sS]|[yY])
+ echo "Yes"
+ ;;
+    [nN][oO]|[nN])
+ echo "No entered. Exiting";
+ exit 1
+       ;;
+    *)
+ echo "Invalid input..."
+ exit 1
+ ;;
+esac
 
-read -p "Are you sure? (y/n)" -n 1 -r
-if [[ $REPLY=~ ^[Nn]$ ]]
-        then
-                echo "No entered. Exiting."
-                exit 1
-fi
+read -r -p "Are you sure? (y/n)" input
+echo
+case $input in
+    [yY][eE][sS]|[yY])
+ echo "Yes"
+ ;;
+    [nN][oO]|[nN])
+ echo "No entered. Exiting";
+ exit 1
+       ;;
+    *)
+ echo "Invalid input..."
+ exit 1
+ ;;
+esac
 
 
