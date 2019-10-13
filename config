@@ -1,0 +1,30 @@
+Host twb-an
+	hostname localhost
+	port 11018
+	user corvex
+	IdentityFile /home/gjones/.ssh/id_rsa_ccs
+
+Host staff-ep
+	hostname localhost
+	port 11007
+	user corvex
+
+Host nci-et
+	hostname localhost
+	port 11029
+	user corvex
+
+Host nvent-anoka
+	hostname localhost
+	port 11015
+	user corvex
+
+Host mcc-thr
+	hostname localhost
+	port 11134
+	user corvex
+
+Host mcc-wbl
+	hostname localhost
+	port 11034
+	user corvex
