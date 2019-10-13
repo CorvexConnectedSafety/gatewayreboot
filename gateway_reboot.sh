@@ -19,7 +19,7 @@ username=$(whoami)
 echo $gateway
 echo $username
 
-#test to see if the gateway name is NOT in the config file. If it's not, inform the user and exit the script.
+#test to see if the gateway name is in the config file. If it's not, inform the user and exit the script.
 
 if grep -q "$gateway" /home/"$username"/.ssh/config 
 	then
@@ -28,6 +28,8 @@ if grep -q "$gateway" /home/"$username"/.ssh/config
 		echo "This gateway does not exist in .ssh/config. Please add an entry for "$gateway" to the file and re-run."
 		exit 1
 fi
+
+#sanity check before rebooting the gateway
 
 read -r -p "Reboot gateway "$gateway"? (y/n)" input
 echo
@@ -45,6 +47,7 @@ case $input in
  ;;
 esac
 
+#second sanity check before rebooting the gateway
 read -r -p "Are you sure? (y/n)" input
 echo
 case $input in
@@ -61,4 +64,7 @@ case $input in
  ;;
 esac
 
-
+#rebooting the gatway via ssh
+echo
+echo "Rebooting "$gateway
+ssh $gateway reboot now
