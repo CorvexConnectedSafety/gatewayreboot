@@ -14,15 +14,32 @@
 
 gateway="$1"
 username=$(whoami)
+
+#remove these echo statements when done testing
 echo $gateway
 echo $username
 
-if ! grep -Fxq "$gateway" /home/"$username"/.ssh/config ;
+#test to see if the gateway name is NOT in the config file. If it's not, inform the user and exit the script.
+
+if grep -Fxq "$gateway" /home/"$username"/.ssh/config ;
 	then 
 		echo "This gateway does not exist in .ssh/config. Please add an entry for "$gateway" to the file and re-run."
 		exit 1
 fi
 
-echo "Reboot gateway "$gateway"? (y/n)"
+read -p "Reboot gateway "$gateway"? (y/n)" -n 1 -r
+echo
+if [[ $REPLY=~ ^[Nn]$ ]]
+	then 
+	  	echo "No entered. Exiting."
+		exit 1
+fi
+
+read -p "Are you sure? (y/n)" -n 1 -r
+if [[ $REPLY=~ ^[Nn]$ ]]
+        then
+                echo "No entered. Exiting."
+                exit 1
+fi
 
 
