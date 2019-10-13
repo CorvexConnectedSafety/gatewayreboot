@@ -21,8 +21,10 @@ echo $username
 
 #test to see if the gateway name is NOT in the config file. If it's not, inform the user and exit the script.
 
-if grep -Fxq "$gateway" /home/"$username"/.ssh/config ;
-	then 
+if grep -q "$gateway" /home/"$username"/.ssh/config 
+	then
+		echo
+	else 
 		echo "This gateway does not exist in .ssh/config. Please add an entry for "$gateway" to the file and re-run."
 		exit 1
 fi
