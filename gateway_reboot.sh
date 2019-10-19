@@ -68,3 +68,5 @@ esac
 echo
 echo "Rebooting "$gateway
 ssh $gateway reboot now
+sleep 3
+echo $gateway" has been rebooted."
