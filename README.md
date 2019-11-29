@@ -7,7 +7,7 @@ If it is not, we will notify the user that it needs to be configured before cont
  
 Ideally all gateways should be converted to passwordless ssh access similar to twb-an's current configuration.
 
-/home/<username>/.ssh/config will need to be created for each user with each gateway's hostname.
+/home/< username >/.ssh/config will need to be created for each user with each gateway's hostname.
 
 An example config file "config" is included with this script in it's repo.
 Edit this file to reflect the current username and point to the proper keyfile with IdentityFile.
